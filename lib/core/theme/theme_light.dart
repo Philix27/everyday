@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 // Color _baseColor = const Color(0xFF06748F);
-Color _baseColor = const Color(0xFF06748F);
+Color _baseColor = Color.fromARGB(255, 212, 2, 2);
 // Color _bgColor = Colors.grey[200]!;
 Color _bgColor = const Color(0xFFeff4f9);
 

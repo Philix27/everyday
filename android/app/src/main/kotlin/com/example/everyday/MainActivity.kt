@@ -1,4 +1,4 @@
-package com.example.everyday
+package com.philix.everyday
 
 import io.flutter.embedding.android.FlutterActivity
 

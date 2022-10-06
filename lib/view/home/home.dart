@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:everyday/view/widgets/drawer_list.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
@@ -26,24 +27,28 @@ class HomePage extends StatelessWidget {
         elevation: 0,
         centerTitle: true,
         title: Text(
-          "everyday",
+          "Everyday",
           style: Styles.headlineText2!.copyWith(
             fontWeight: FontWeight.w600,
           ),
         ),
-        leading: IconButton(
-          onPressed: () => Get.to(() => const ProfilePage()),
-          icon: const Icon(Icons.person_outline),
+      ),
+      drawer: Drawer(
+        child: SizedBox(
+          width: MediaQuery.of(context).size.width * 0.3,
+          child: Column(
+            children: [
+              const SizedBox(height: 40),
+              getDrawerHeaderListTile(title: "Categories", goTo: () {}),
+              getDrawerListTile(goTo: () {}, title: "All"),
+              getDrawerListTile(goTo: () {}, title: "Pharmacy"),
+              getDrawerListTile(goTo: () {}, title: "Electronics"),
+              getDrawerListTile(goTo: () {}, title: "Home"),
+              getDrawerListTile(goTo: () {}, title: "Others"),
+            ],
+          ),
         ),
       ),
-      // body: ListView(
-      //   controller: controller,
-      //   children: [
-      //     SliderWidget(ref: MyGlobals.homeBannerCollection),
-      //     const SizedBox(height: 15),
-      //     const NewsSection(),
-      //   ],
-      // ),
       body: SingleChildScrollView(
         child: Column(
           children: [

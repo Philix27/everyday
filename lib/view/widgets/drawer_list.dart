@@ -22,7 +22,7 @@ Widget getDrawerHeaderListTile({
     tileColor: Styles.primaryColor,
     title: Text(
       title,
-      style: Styles.headlineText4,
+      style: Styles.headlineText4!.copyWith(fontWeight: FontWeight.bold),
     ),
     onTap: goTo,
   );

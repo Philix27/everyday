@@ -1,3 +1,4 @@
+import 'package:everyday/view/profile/profile_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
@@ -54,22 +55,16 @@ class _AppScaffoldState extends State<AppScaffold> {
   }
 }
 
-List<Widget> _buildScreens() {
-  return [
-    HomePage(),
-    DrugsPage(),
-    MCQPage(),
-    const ArticlesDashboard(),
-    // BookmarkPage(),
-  ];
-}
+List<Widget> _buildScreens() =>
+    [HomePage(), const DrugsPage(), const MCQPage(), const ProfilePage()];
 
 List<PersistentBottomNavBarItem> _navBarsItems() {
   return <PersistentBottomNavBarItem>[
     item(CupertinoIcons.home, ("Home")),
-    item(CupertinoIcons.search, ("Brands")),
-    item(CupertinoIcons.question_square, ("MCQs")),
-    item(Icons.notes, ("Notes")),
+    item(CupertinoIcons.shopping_cart, ("Cart")),
+    item(Icons.receipt, ("Orders")),
+    item(CupertinoIcons.settings, ("Settings")),
+
     // item(Icons.bookmark, ("Bookmark")),
   ];
 }
