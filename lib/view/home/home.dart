@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:everyday/view/widgets/drawer_list.dart';
-
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:everyday/controller/blogs.dart';
@@ -8,7 +7,6 @@ import 'package:everyday/core/global_variables.dart';
 import 'package:everyday/core/theme/styles.dart';
 import 'package:everyday/models/blogs.dart';
 import 'package:everyday/view/article/pep/mdDisplay.dart';
-import 'package:everyday/view/profile/profile_page.dart';
 import 'package:everyday/view/slider/slider_w.dart';
 import 'package:everyday/view/widgets/loading.dart';
 
@@ -28,14 +26,14 @@ class HomePage extends StatelessWidget {
         centerTitle: true,
         title: Text(
           "Everyday",
-          style: Styles.headlineText2!.copyWith(
+          style: Styles.headlineText1!.copyWith(
             fontWeight: FontWeight.w600,
           ),
         ),
       ),
-      drawer: Drawer(
-        child: SizedBox(
-          width: MediaQuery.of(context).size.width * 0.3,
+      drawer: SizedBox(
+        width: MediaQuery.of(context).size.width * 0.4,
+        child: Drawer(
           child: Column(
             children: [
               const SizedBox(height: 40),

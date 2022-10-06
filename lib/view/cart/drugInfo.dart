@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:everyday/core/theme/styles.dart';
-import 'package:everyday/models/brandDrugs.dart';
+import 'package:everyday/models/product.dart';
 
 class DrugInfo extends StatelessWidget {
   const DrugInfo({
     Key? key,
     required this.brandDrug,
   }) : super(key: key);
-  final BrandDrugs brandDrug;
+  final Product brandDrug;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,11 +28,11 @@ class DrugInfo extends StatelessWidget {
         child: ListView(
           children: [
             Text(
-              "Generic: ${brandDrug.generic}",
+              "Generic: ${brandDrug.name}",
               style: Styles.headlineText1,
             ),
             Text(
-              "Company: ${brandDrug.company}",
+              "Company: ${brandDrug.category}",
               style: Styles.bodyText2,
             ),
             Text(
@@ -41,7 +41,7 @@ class DrugInfo extends StatelessWidget {
             ),
             SingleChildScrollView(
               child: MarkdownBody(
-                data: brandDrug.note,
+                data: brandDrug.name,
                 selectable: false,
                 styleSheet: MarkdownStyleSheet(
                   h1: Styles.headlineText1,

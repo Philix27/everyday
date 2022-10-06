@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
-import 'package:everyday/controller/drugs.dart';
+import 'package:everyday/controller/products.dart';
 import 'package:everyday/core/theme/styles.dart';
-import 'package:everyday/models/brandDrugs.dart';
-import 'package:everyday/view/drugs/drugs.dart';
+import 'package:everyday/models/product.dart';
+import 'package:everyday/view/cart/cart_page.dart';
 import 'package:everyday/view/widgets/loading.dart';
 
-class SearchBrands extends SearchDelegate<BrandDrugs> {
+class SearchBrands extends SearchDelegate<Product> {
   @override
   String get searchFieldLabel => 'Search';
 
@@ -47,15 +47,14 @@ class SearchBrands extends SearchDelegate<BrandDrugs> {
   @override
   Widget buildResults(BuildContext context) {
     return FutureBuilder(
-      future: DrugsDb.getAllBrands(),
-      builder:
-          (BuildContext context, AsyncSnapshot<List<BrandDrugs>> snapshot) {
+      future: ProductsDb.getAllBrands(),
+      builder: (BuildContext context, AsyncSnapshot<List<Product>> snapshot) {
         if (!snapshot.hasData) {
           return Loading.cubegrid();
         } else if (snapshot.data!.isEmpty) {
           return Container();
         } else {
-          List<BrandDrugs> _drugList = [];
+          List<Product> _drugList = [];
 
           _drugList = snapshot.data!.where((ho) {
             return ho.name.toUpperCase().contains(
@@ -71,7 +70,7 @@ class SearchBrands extends SearchDelegate<BrandDrugs> {
                 shrinkWrap: true,
                 itemCount: _drugList.length,
                 itemBuilder: (BuildContext context, int index) {
-                  BrandDrugs b = _drugList[index];
+                  Product b = _drugList[index];
                   return buildDrugTile(context, b);
                 }),
           );
@@ -82,18 +81,17 @@ class SearchBrands extends SearchDelegate<BrandDrugs> {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    final List<BrandDrugs> _drugList = [];
+    final List<Product> _drugList = [];
 
     return FutureBuilder(
-      future: DrugsDb.getAllBrands(),
-      builder:
-          (BuildContext context, AsyncSnapshot<List<BrandDrugs>> snapshot) {
+      future: ProductsDb.getAllBrands(),
+      builder: (BuildContext context, AsyncSnapshot<List<Product>> snapshot) {
         if (!snapshot.hasData) {
           return Loading.cubegrid();
         } else if (snapshot.data!.isEmpty) {
           return Container();
         } else {
-          List<BrandDrugs> _drugList = [];
+          List<Product> _drugList = [];
 
           _drugList = snapshot.data!.where((ho) {
             return ho.name.toUpperCase().contains(
@@ -109,7 +107,7 @@ class SearchBrands extends SearchDelegate<BrandDrugs> {
                 shrinkWrap: true,
                 itemCount: _drugList.length,
                 itemBuilder: (BuildContext context, int index) {
-                  BrandDrugs b = _drugList[index];
+                  Product b = _drugList[index];
                   return buildDrugTile(context, b);
                 }),
           );

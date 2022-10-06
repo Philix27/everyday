@@ -6,7 +6,6 @@ import 'package:everyday/core/global_variables.dart';
 import 'package:everyday/core/theme/styles.dart';
 import 'package:everyday/view/article/article_department.dart';
 import 'package:everyday/view/article/pep/pepNotesList.dart';
-import 'package:everyday/view/bookmark/bookmark_page.dart';
 import 'package:everyday/view/widgets/dashboard_card.dart';
 import 'package:everyday/view/widgets/loading.dart';
 import 'package:everyday/view/widgets/widgets.dart';
@@ -36,11 +35,6 @@ class _ArticlesDashboardState extends State<ArticlesDashboard> {
             fontWeight: FontWeight.w600,
           ),
         ),
-      ),
-      floatingActionButton: MyWidgets.fab(
-        icon: Icons.bookmark,
-        onTap: () => Get.to(
-            BookmarkPage(bookmark: Bookmark.notes, title: 'Saved Notes ')),
       ),
       body: ListView(
         controller: controller,

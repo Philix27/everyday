@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:everyday/core/theme/styles.dart';
 import 'package:everyday/view/article/index.dart';
-import 'package:everyday/view/drugs/drugs.dart';
+import 'package:everyday/view/cart/cart_page.dart';
 import 'package:everyday/view/home/home.dart';
 import 'package:everyday/view/mcq/mcq.dart';
 
@@ -56,7 +56,7 @@ class _AppScaffoldState extends State<AppScaffold> {
 }
 
 List<Widget> _buildScreens() =>
-    [HomePage(), const DrugsPage(), const MCQPage(), const ProfilePage()];
+    [HomePage(), const CartPage(), const MCQPage(), const ProfilePage()];
 
 List<PersistentBottomNavBarItem> _navBarsItems() {
   return <PersistentBottomNavBarItem>[
