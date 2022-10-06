@@ -1,4 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:everyday/controller/products.dart';
+import 'package:everyday/models/product.dart';
+import 'package:everyday/view/home/product_details.dart';
+import 'package:everyday/view/home/search.dart';
 import 'package:everyday/view/widgets/drawer_list.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
@@ -30,6 +34,17 @@ class HomePage extends StatelessWidget {
             fontWeight: FontWeight.w600,
           ),
         ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              showSearch(
+                context: context,
+                delegate: SearchBrands(),
+              );
+            },
+            icon: const Icon(Icons.search_rounded),
+          ),
+        ],
       ),
       drawer: SizedBox(
         width: MediaQuery.of(context).size.width * 0.4,
@@ -47,14 +62,99 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            ...getHomeWidgetsList(context),
-          ],
-        ),
+      // body: SingleChildScrollView(
+      //   child: Column(
+      //     children: [
+      //       ...getHomeWidgetsList(context),
+      //     ],
+      //   ),
+      // ),
+      body: FutureBuilder(
+        future: ProductsDb.getAllBrands(),
+        builder: (BuildContext context, AsyncSnapshot<List<Product>> snapshot) {
+          if (!snapshot.hasData) {
+            return Loading.cubegrid();
+          } else if (snapshot.data!.isEmpty) {
+            return Container();
+          } else {
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              // child: ListView.builder(
+              //     shrinkWrap: true,
+              //     itemCount: snapshot.data!.length,
+              //     itemBuilder: (BuildContext context, int index) {
+              //       Product b = snapshot.data![index];
+              //       return buildDrugTile(context, b);
+              //     }),
+              // child: StaggeredGridTile.fit(
+              //   crossAxisCellCount: 2,
+              //   child: SizedBox(
+              //     child: Text(),
+              //   ),
+              // ),
+              child: GridView.builder(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 2,
+                    crossAxisSpacing: 5,
+                    childAspectRatio: 3.5 / 5,
+                    // mainAxisExtent: 2,
+                  ),
+                  itemCount: snapshot.data!.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    Product b = snapshot.data![index];
+                    return buildProductCard(b);
+                  }),
+            );
+          }
+        },
       ),
     );
     // body: getHomeWidgetsList(context)[0]);
   }
+}
+
+Widget buildProductCard(Product b) {
+  return Card(
+    color: Styles.cardColor,
+    child: Column(
+      children: [
+        InkWell(
+          onTap: () => Get.to(ProductDetailsPage(product: b)),
+          child: CachedNetworkImage(
+            imageUrl: b.img[0],
+            fit: BoxFit.cover,
+            placeholder: (context, url) => Loading.cubegrid(),
+            errorWidget: (context, url, error) => const Icon(
+              Icons.error,
+            ),
+          ),
+        ),
+        Expanded(
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+              child: Text(
+                b.name,
+                style: Styles.bodyText2,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+          ),
+        ),
+        Container(
+          height: 35,
+          color: Styles.primaryColor,
+          child: Center(
+            child: Text(
+              MyGlobals.moneyFormater(b.price),
+              style: Styles.headlineText4,
+            ),
+          ),
+        ),
+        // MyWidgets.raisedButton(title: "Price", onPressed: () {}),
+      ],
+    ),
+  );
 }
