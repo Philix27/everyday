@@ -1,3 +1,4 @@
+import 'package:everyday/view/order/orders_page.dart';
 import 'package:everyday/view/profile/profile_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +7,6 @@ import 'package:everyday/core/theme/styles.dart';
 import 'package:everyday/view/article/index.dart';
 import 'package:everyday/view/cart/cart_page.dart';
 import 'package:everyday/view/home/home.dart';
-import 'package:everyday/view/mcq/mcq.dart';
 
 class AppScaffold extends StatefulWidget {
   const AppScaffold({Key? key}) : super(key: key);
@@ -55,8 +55,12 @@ class _AppScaffoldState extends State<AppScaffold> {
   }
 }
 
-List<Widget> _buildScreens() =>
-    [HomePage(), const CartPage(), const MCQPage(), const ProfilePage()];
+List<Widget> _buildScreens() => [
+      HomePage(),
+      const CartPage(),
+      const OrdersPage(),
+      const ProfilePage(),
+    ];
 
 List<PersistentBottomNavBarItem> _navBarsItems() {
   return <PersistentBottomNavBarItem>[
