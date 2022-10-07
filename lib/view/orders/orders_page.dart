@@ -2,9 +2,11 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:everyday/view/home/product_details.dart';
 import 'package:everyday/view/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:everyday/controller/products.dart';
 import 'package:everyday/core/theme/styles.dart';
 import 'package:everyday/models/product.dart';
+import 'package:everyday/view/cart/drugInfo.dart';
 import 'package:everyday/view/home/search.dart';
 import 'package:everyday/view/widgets/loading.dart';
 
@@ -19,11 +21,22 @@ class OrdersPage extends StatelessWidget {
         elevation: 0,
         centerTitle: true,
         title: Text(
-          "Orders",
+          "Cart",
           style: Styles.headlineText2!.copyWith(
             fontWeight: FontWeight.w600,
           ),
         ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              showSearch(
+                context: context,
+                delegate: SearchBrands(),
+              );
+            },
+            icon: const Icon(Icons.search_rounded),
+          ),
+        ],
       ),
       body: FutureBuilder(
         future: ProductsDb.getAllBrands(),

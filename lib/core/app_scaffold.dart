@@ -1,10 +1,9 @@
-import 'package:everyday/view/order/orders_page.dart';
+import 'package:everyday/view/orders/orders_page.dart';
 import 'package:everyday/view/profile/profile_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:everyday/core/theme/styles.dart';
-import 'package:everyday/view/article/index.dart';
 import 'package:everyday/view/cart/cart_page.dart';
 import 'package:everyday/view/home/home.dart';
 
