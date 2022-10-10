@@ -2,11 +2,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:everyday/view/home/product_details.dart';
 import 'package:everyday/view/widgets/widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:everyday/controller/products.dart';
 import 'package:everyday/core/theme/styles.dart';
 import 'package:everyday/models/product.dart';
-import 'package:everyday/view/cart/drugInfo.dart';
 import 'package:everyday/view/home/search.dart';
 import 'package:everyday/view/widgets/loading.dart';
 

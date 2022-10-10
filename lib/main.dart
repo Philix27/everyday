@@ -11,7 +11,9 @@ import 'package:everyday/models/user.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp();
+
   final Directory appDocumentDirectory =
       await getApplicationDocumentsDirectory();
 
@@ -45,5 +47,7 @@ void main() async {
     DeviceOrientation.portraitDown,
   ]);
 
+  var lili = <String>[];
+  // lili.any();
   runApp(const AppWidget());
 }
